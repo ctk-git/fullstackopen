@@ -1,0 +1,16 @@
+title 0.5: Single page app
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over browser:
+field form value is added on client side via DOM
+field form is emptied
+values are sent to server
+end note
+
+note over server:
+form is formatted, and note is pushed
+end note
+
+server--> browser: status code 201
+
