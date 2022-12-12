@@ -4,7 +4,7 @@ const Button = ({handleClick, text}) => <button onClick={handleClick}>{text}</bu
 
 const Heading1 = ({text}) => <h1>{text}</h1>
 
-const PrintStats = ({text,value}) => <div>{text} {value} </div> 
+const StatisticLine = ({text,value,text2}) => <div>{text} {value} {text2}</div> 
 
 // a proper place to define a component
 const Statistics = (props) => {
@@ -19,17 +19,12 @@ const Statistics = (props) => {
   
   return (
       <div>
-      good {props.good}
-      <br/>
-      neutral {props.neutral}
-      <br/>
-      bad {props.bad}
-      <br/>
-      all {props.all}
-      <br/>
-      average {props.average}
-      <br/>
-      positive {props.positive*100.0} %
+      <StatisticLine text="good" value={props.good} />
+      <StatisticLine text="neutral" value={props.neutral} />
+      <StatisticLine text="bad" value={props.bad} />
+      <StatisticLine text="all" value={props.all} />
+      <StatisticLine text="average" value={props.average} />
+      <StatisticLine text="positive" value={props.positive*100} text2="%" />
       </div>
   )
   
