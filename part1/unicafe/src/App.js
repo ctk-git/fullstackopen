@@ -4,7 +4,11 @@ const Button = ({handleClick, text}) => <button onClick={handleClick}>{text}</bu
 
 const Heading1 = ({text}) => <h1>{text}</h1>
 
-const StatisticLine = ({text,value,text2}) => <div>{text} {value} {text2}</div> 
+const StatisticLine = ({text,value,text2}) => 
+<tr>
+<td> {text} </td>
+<td>&nbsp;{value} {text2}</td>
+</tr> 
 
 // a proper place to define a component
 const Statistics = (props) => {
@@ -18,14 +22,16 @@ const Statistics = (props) => {
 
   
   return (
-      <div>
-      <StatisticLine text="good" value={props.good} />
-      <StatisticLine text="neutral" value={props.neutral} />
-      <StatisticLine text="bad" value={props.bad} />
-      <StatisticLine text="all" value={props.all} />
-      <StatisticLine text="average" value={props.average} />
-      <StatisticLine text="positive" value={props.positive*100} text2="%" />
-      </div>
+  <table>
+      <tbody>
+          <StatisticLine text="good" value={props.good} />
+          <StatisticLine text="neutral" value={props.neutral} />
+          <StatisticLine text="bad" value={props.bad} />
+          <StatisticLine text="all" value={props.all} />
+          <StatisticLine text="average" value={props.average} />
+          <StatisticLine text="positive" value={props.positive*100} text2="%" />
+      </tbody>
+  </table>
   )
   
   // ...
