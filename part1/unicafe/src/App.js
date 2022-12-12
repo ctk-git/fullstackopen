@@ -8,18 +8,29 @@ const PrintStats = ({text,value}) => <div>{text} {value} </div>
 
 // a proper place to define a component
 const Statistics = (props) => {
-
+    if(props.all === 0){
+        return (
+        <div>
+        No feedback given
+        </div>
+     )
+    }
 
   
   return (
-  <div>
-  all {props.all}
-  <br/>
-  average {props.average}
-  <br/>
-  positive {props.positive*100.0} %
-  
-  </div>
+      <div>
+      good {props.good}
+      <br/>
+      neutral {props.neutral}
+      <br/>
+      bad {props.bad}
+      <br/>
+      all {props.all}
+      <br/>
+      average {props.average}
+      <br/>
+      positive {props.positive*100.0} %
+      </div>
   )
   
   // ...
@@ -65,11 +76,8 @@ const App = () => {
       <Button handleClick={handleNeutral} text='neutral' />
       <Button handleClick={handleBad} text='bad' />
     <Heading1 text='statistics' />
-    <PrintStats text='good' value={good} />
-    <PrintStats text='neutral' value={neutral} />
-    <PrintStats text='bad' value={bad} />
     
-    <Statistics all={all} average={average} positive={positive} />
+    <Statistics good={good} neutral={neutral} bad={bad} all={all} average={average} positive={positive} />
 
     
 
