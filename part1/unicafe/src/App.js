@@ -6,6 +6,24 @@ const Heading1 = ({text}) => <h1>{text}</h1>
 
 const PrintStats = ({text,value}) => <div>{text} {value} </div> 
 
+// a proper place to define a component
+const Statistics = (props) => {
+
+
+  
+  return (
+  <div>
+  all {props.all}
+  <br/>
+  average {props.average}
+  <br/>
+  positive {props.positive*100.0} %
+  
+  </div>
+  )
+  
+  // ...
+}
 
 
 const App = () => {
@@ -19,21 +37,24 @@ const App = () => {
 
   const handleGood = () => {
       setGood(good + 1)
-      setAll(all + 1)
-      setPositive((good + 1)/(all + 1)*100.0)
-      setAverage(((good + 1)-bad)/(all + 1))
+      setAll(all+1)
+      setAverage(((good+1)-bad)/(all+1))
+      setPositive((good+1)/(all+1))
+
   }
   const handleNeutral = () => {
       setNeutral(neutral + 1)
-      setAll(all + 1)
-      setPositive(good/(all + 1)*100.0)
-      setAverage((good-bad)/(all + 1))
+      setAll(all+1)
+      setAverage(((good)-bad)/(all+1))
+      setPositive((good)/(all+1))
+
   }
   const handleBad = () => {
       setBad(bad + 1)
-      setAll(all + 1)
-      setPositive(good/(all + 1)*100.0)
-      setAverage((good-(bad + 1))/(all + 1))
+      setAll(all+1)
+      setAverage(((good)-(bad+1))/(all+1))
+      setPositive((good)/(all+1))
+
   }
 
 
@@ -47,9 +68,9 @@ const App = () => {
     <PrintStats text='good' value={good} />
     <PrintStats text='neutral' value={neutral} />
     <PrintStats text='bad' value={bad} />
-    <PrintStats text='all' value={all} />
-    <PrintStats text='average' value={average} />
-    positive {positive} %
+    
+    <Statistics all={all} average={average} positive={positive} />
+
     
 
     </div>
